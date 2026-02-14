@@ -17,7 +17,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '9.0.x'
 
     - name: Install MAUI workload
       run: dotnet workload install maui
@@ -26,8 +26,8 @@ jobs:
       run: dotnet restore AviationApp.sln
 
     - name: Build iOS Simulator
-      run: dotnet build AviationApp.sln -f net8.0-ios -r iossimulator-x64 --configuration Release
+      run: dotnet build AviationApp.sln -f net9.0-ios -r iossimulator-x64 --configuration Release
 
     - name: Build iOS Device
-      run: dotnet build AviationApp.sln -f net8.0-ios -r ios-arm64 --configuration Release
+      run: dotnet build AviationApp.sln -f net9.0-ios -r ios-arm64 --configuration Release
       continue-on-error: true
