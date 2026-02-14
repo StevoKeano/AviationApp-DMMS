@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-ios:
     runs-on: macos-14
     
     steps:
@@ -23,11 +23,11 @@ jobs:
       run: dotnet workload install maui
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore -f net8.0-ios
 
-    - name: Build iOS
-      run: dotnet build -f net8.0-ios --configuration Release
+    - name: Build iOS Simulator
+      run: dotnet build -f net8.0-ios -r iossimulator-x64 --configuration Release
 
-    - name: Build APK (Android)
-      run: dotnet build -f net8.0-android --configuration Release
+    - name: Build iOS Device
+      run: dotnet build -f net8.0-ios -r ios-arm64 --configuration Release
       continue-on-error: true
