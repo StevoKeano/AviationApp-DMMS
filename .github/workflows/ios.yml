@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-ios:
-    runs-on: macos-14
+    runs-on: macos-15
     
     steps:
     - name: Checkout
@@ -17,15 +17,10 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '9.0.x'
 
     - name: Install MAUI workload
-      run: dotnet workload install maui --ignore-failed-sources
+      run: dotnet workload install maui
 
-    - name: Restore dependencies
-      run: dotnet restore --ignore-failed-sources
-      continue-on-error: true
-
-    - name: Build iOS
+    - name: Build
       run: dotnet build --configuration Release
-      continue-on-error: true
