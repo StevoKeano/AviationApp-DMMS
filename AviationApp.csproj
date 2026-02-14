@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
+		<TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
 		<RunAOTCompilation>false</RunAOTCompilation>
 		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
 		<AndroidMinimumApiLevel>21</AndroidMinimumApiLevel>
@@ -36,23 +36,21 @@
 		<AndroidSigningKeyStore>DMMSAlert.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 		<!-- Release mode settings -->
-		<PropertyGroup Condition="'$(Configuration)'=='Release'">
-			<AndroidLinkMode>None</AndroidLinkMode>
-		</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
-		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidLinkMode>None</AndroidLinkMode>
+		<AndroidKeyStore Condition="Exists('DMMSAlert.keystore')">True</AndroidKeyStore>
 		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>		
-		<AndroidSigningKeyStore>DMMSAlert.keystore</AndroidSigningKeyStore>
-		<AndroidSigningStorePass>$(ANDROID_SIGNING_STORE_PASS)</AndroidSigningStorePass>
-		<AndroidSigningKeyAlias>DMMSAlert</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass>$(ANDROID_SIGNING_KEY_PASS)</AndroidSigningKeyPass>
+		<AndroidSigningKeyStore Condition="Exists('DMMSAlert.keystore')">DMMSAlert.keystore</AndroidSigningKeyStore>
+		<AndroidSigningStorePass Condition="Exists('DMMSAlert.keystore')">$(ANDROID_SIGNING_STORE_PASS)</AndroidSigningStorePass>
+		<AndroidSigningKeyAlias Condition="Exists('DMMSAlert.keystore')">DMMSAlert</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass Condition="Exists('DMMSAlert.keystore')">$(ANDROID_SIGNING_KEY_PASS)</AndroidSigningKeyPass>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
-		<AndroidKeyStore>True</AndroidKeyStore>
-		<AndroidSigningKeyStore>DMMSAlert.keystore</AndroidSigningKeyStore>
-		<AndroidSigningStorePass>$(ANDROID_SIGNING_STORE_PASS)</AndroidSigningStorePass>
-		<AndroidSigningKeyAlias>DMMSAlert</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass>$(ANDROID_SIGNING_KEY_PASS)</AndroidSigningKeyPass>
+		<AndroidKeyStore Condition="Exists('DMMSAlert.keystore')">True</AndroidKeyStore>
+		<AndroidSigningKeyStore Condition="Exists('DMMSAlert.keystore')">DMMSAlert.keystore</AndroidSigningKeyStore>
+		<AndroidSigningStorePass Condition="Exists('DMMSAlert.keystore')">$(ANDROID_SIGNING_STORE_PASS)</AndroidSigningStorePass>
+		<AndroidSigningKeyAlias Condition="Exists('DMMSAlert.keystore')">DMMSAlert</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass Condition="Exists('DMMSAlert.keystore')">$(ANDROID_SIGNING_KEY_PASS)</AndroidSigningKeyPass>
 	</PropertyGroup>	
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
 	  <AndroidKeyStore>True</AndroidKeyStore>
