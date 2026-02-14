@@ -22,8 +22,8 @@ jobs:
     - name: Install MAUI workload
       run: dotnet workload install maui
 
-    - name: Restore
+    - name: Restore dependencies
       run: dotnet restore
 
-    - name: Build iOS
-      run: dotnet build -f net9.0-ios --configuration Release
+    - name: Build
+      run: dotnet build --configuration Release
