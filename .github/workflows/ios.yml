@@ -23,11 +23,7 @@ jobs:
       run: dotnet workload install maui
 
     - name: Restore
-      run: dotnet restore AviationApp.sln
+      run: dotnet restore
 
-    - name: Build iOS Simulator
-      run: dotnet build AviationApp.sln -f net9.0-ios -r iossimulator-x64 --configuration Release
-
-    - name: Build iOS Device
-      run: dotnet build AviationApp.sln -f net9.0-ios -r ios-arm64 --configuration Release
-      continue-on-error: true
+    - name: Build iOS
+      run: dotnet build -f net9.0-ios --configuration Release
