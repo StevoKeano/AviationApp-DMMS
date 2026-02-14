@@ -23,11 +23,11 @@ jobs:
       run: dotnet workload install maui
 
     - name: Restore dependencies
-      run: dotnet restore -f net8.0-ios
+      run: dotnet restore AviationApp.csproj -f net8.0-ios
 
     - name: Build iOS Simulator
-      run: dotnet build -f net8.0-ios -r iossimulator-x64 --configuration Release
+      run: dotnet build AviationApp.csproj -f net8.0-ios -r iossimulator-x64 --configuration Release
 
     - name: Build iOS Device
-      run: dotnet build -f net8.0-ios -r ios-arm64 --configuration Release
+      run: dotnet build AviationApp.csproj -f net8.0-ios -r ios-arm64 --configuration Release
       continue-on-error: true
