@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build-ios:
-    runs-on: macos-15
+  build:
+    runs-on: macOS-latest
     
     steps:
     - name: Checkout
@@ -16,10 +16,8 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x'
 
-    - name: Install MAUI workload
+    - name: Install MAUI
       run: dotnet workload install maui
 
     - name: Build
