@@ -9,7 +9,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '8.0.404'
+      - name: Remove .NET 10 to avoid conflicts
+        run: rm -rf $HOME/.dotnet/sdk/10.0*
+      - name: Setup MSBuild
       - name: Install iOS workload
         run: |
           dotnet workload install maui-ios
