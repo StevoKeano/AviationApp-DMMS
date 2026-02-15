@@ -9,21 +9,15 @@ jobs:
     runs-on: macOS-14
     
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-    - name: Setup .NET
+    - name: Install .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
 
-    - name: Install MAUI
-      run: |
-        dotnet workload list
-        dotnet workload install maui
+    - name: Install workloads
+      run: dotnet workload install maui
 
     - name: Build
-      run: |
-        dotnet --version
-        dotnet restore
-        dotnet build -f net8.0-ios --configuration Release --no-restore
+      run: dotnet build AviationApp.csproj -f net8.0-ios -c Release
