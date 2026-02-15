@@ -8,5 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
-      - name: Build with verbose
-        run: dotnet build -v d 2>&1 | tail -50
+      - name: Build
+        run: dotnet build -c Release
+      - name: Publish
+        run: dotnet publish -c Release -p:CodesignKey="" -p:CodesignIdentity="" -o ./publish
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-simulator
+          path: ./publish
