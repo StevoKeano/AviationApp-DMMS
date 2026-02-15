@@ -10,11 +10,11 @@ jobs:
       - uses: actions/setup-dotnet@v4
       - name: Build
         run: dotnet build -c Release
-      - name: Publish Simulator
+      - name: Publish
         run: |
-          dotnet publish -c Release -r iossimulator-x64 -o ./publish/ios-sim --no-build
-      - name: Upload Simulator
+          dotnet publish -c Release -r iossimulator-x64 -o ./publish
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: ios-simulator
-          path: ./publish/ios-sim
+          name: ios-app
+          path: ./publish
