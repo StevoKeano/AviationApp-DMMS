@@ -5,10 +5,15 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: macos-14
-    env:
-      DOTNET_ROLL_FORWARD: Disable
     steps:
       - uses: actions/checkout@v4
+      - name: Cache .NET
+        uses: actions/cache@v4
+        with:
+          path: ~/.dotnet
+          key: ${{ runner.os }}-dotnet-${{ hashFiles('global.json') }}
+          restore-keys: |
+            ${{ runner.os }}-dotnet-
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.404'
