@@ -1,0 +1,32 @@
+█▀▀█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀█ █▀▀█ █▀▀█
+█  █ █  █ █▀▀▀ █  █ █    █  █ █  █ █▀▀▀
+▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀
+
+  ┃  sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper                                             
+  ┃  sudo: a password is required                                                                                                                                                       
+  ┃                                                                                                                                                                                     
+                                                                                                                                                                                        
+  ┃  Thinking: Can't run sudo without a password. Let me give the DORK instructions to do it themselves.                                                                                
+                                                                                                                                                                                        
+     The DORK needs to run this one-time setup in Terminal:                                                                                                                             
+                                                                                                                                                                                        
+     sudo xcode-select -s /Applications/Xcode.app/Contents/Developer                                                                                                                    
+                                                                                                                                                                                        
+     It'll ask for their Mac password. After that, they'll be able to use simulators.                                                                                                   
+                                                                                                                                                                                        
+     Once that's done, they can run:                                                                                                             ⬖ Getting started                ✕     
+     xcrun simctl list devices available                                                                                                                                                
+                                                                                                                                                   OpenCode includes free models        
+     Then boot a simulator and install the app from the GitHub Actions artifact.                                                                   so you can start immediately.        
+                                                                                                                                                                                        
+     Want me to create a simple script the DORK can run to do all this?                                                                            Connect from 75+ providers to        
+                                                                                                                                                   use other models, including          
+     ▣  Build · big-pickle · 38.4s                                                                                                                 Claude, GPT, Gemini etc              
+                                                                                                                                                                                        
+  ┃                                                                                                                                                Connect provider        /connect     
+  ┃                                                                                                                                                                                     
+  ┃                                                                                                                                                                                     
+  ┃  Build  Big Pickle OpenCode Zen                                                                                                            /~                                       
+  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                                             
+                                                                                               ctrl+t variants  tab agents  ctrl+p commands    • OpenCode 1.1.65                        
+                                                                                                                                                                                        
