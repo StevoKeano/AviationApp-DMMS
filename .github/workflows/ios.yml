@@ -7,7 +7,6 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - name: Show dotnet version
-        run: dotnet --version
+      - uses: actions/setup-dotnet@v4
       - name: Build
-        run: dotnet build -c Release
+        run: dotnet build -v d
