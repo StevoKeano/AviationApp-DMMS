@@ -4,14 +4,10 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macOS-15
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.404'
-      - name: Remove .NET 10 to avoid conflicts
-        run: rm -rf $HOME/.dotnet/sdk/10.0*
       - name: Install iOS workload
         run: |
           dotnet workload install maui-ios
