@@ -20,5 +20,15 @@ jobs:
     - name: Install MAUI
       run: dotnet workload install maui
 
-    - name: Build with verbose
-      run: dotnet build -f net8.0-ios -v d --configuration Release 2>&1 | head -100
+    - name: Build iOS
+      run: dotnet build -f net8.0-ios -p:CodesignKey="" -p:Codesign="" --configuration Release
+
+    - name: Publish iOS Simulator
+      run: |
+        dotnet publish -f net8.0-ios -r iossimulator-x64 --configuration Release -p:CodesignKey="" -p:Codesign="" -o ./publish/ios-sim
+
+    - name: Upload IPA
+      uses: actions/upload-artifact@v4
+      with:
+        name: ios-app
+        path: ./publish/ios-sim
