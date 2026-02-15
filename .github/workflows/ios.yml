@@ -4,25 +4,21 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '7.0.404'
       - name: Remove other SDKs
         run: |
           rm -rf $HOME/.dotnet/sdk/10.0*
           rm -rf $HOME/.dotnet/sdk/9.0*
-          rm -rf $HOME/.dotnet/sdk/8.0*
       - name: Install iOS workload
         run: |
           $HOME/.dotnet/dotnet workload install maui-ios
-          $HOME/.dotnet/dotnet restore
       - name: Build
-        run: $HOME/.dotnet/dotnet build -c Release
+        run: $HOME/.dotnet/dotnet build -c Release -p:EolTargetFrameworkBehavior=disable
       - name: Publish
-        run: $HOME/.dotnet/dotnet publish -c Release -r iossimulator-x64 -p:CodesignKey="" -p:CodesignIdentity="" -o ./publish
+        run: $HOME/.dotnet/dotnet publish -c Release -r iossimulator-x64 -p:CodesignKey="" -p:CodesignIdentity="" -p:EolTargetFrameworkBehavior=disable -o ./publish
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
