@@ -18,7 +18,9 @@ jobs:
       uses: actions/setup-dotnet@v4
 
     - name: Install MAUI
-      run: dotnet workload install maui
+      run: |
+        dotnet workload install maui
+        dotnet workload list
 
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build -f net8.0-ios --configuration Release --nologo

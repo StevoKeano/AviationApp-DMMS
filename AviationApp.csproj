@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net9.0-ios</TargetFramework>
-		<SuppressEolWarning>true</SuppressEolWarning>
+		<TargetFramework>net8.0-ios</TargetFramework>
 		<RunAOTCompilation>false</RunAOTCompilation>
 		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
 		<AndroidMinimumApiLevel>21</AndroidMinimumApiLevel>
