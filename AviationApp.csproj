@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <UseMaui>true</UseMaui>
     <SupportedOSPlatformVersion>14.0</SupportedOSPlatformVersion>
+    <EolTargetFrameworkBehavior>disable</EolTargetFrameworkBehavior>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />

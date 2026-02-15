@@ -10,8 +10,10 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '7.0.404'
-      - name: Remove .NET 10 SDK
-        run: rm -rf $HOME/.dotnet/sdk/10.0*
+      - name: Remove .NET SDKs except 7
+        run: |
+          rm -rf $HOME/.dotnet/sdk/10.0*
+          rm -rf $HOME/.dotnet/sdk/9.0*
       - name: Install iOS workload
         run: |
           dotnet workload install maui-ios
