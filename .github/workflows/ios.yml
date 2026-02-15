@@ -16,9 +16,11 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.100'
 
-    - name: Install MAUI
-      run: dotnet workload install maui
+    - name: Install iOS workload
+      run: dotnet workload install ios
 
-    - name: Build iOS only
+    - name: Build iOS
       run: dotnet build -f net9.0-ios --configuration Release
