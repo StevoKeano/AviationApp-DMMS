@@ -4,16 +4,17 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '7.0.404'
-      - name: Remove .NET SDKs except 7
+      - name: Remove other SDKs
         run: |
           rm -rf $HOME/.dotnet/sdk/10.0*
           rm -rf $HOME/.dotnet/sdk/9.0*
+          rm -rf $HOME/.dotnet/sdk/8.0*
       - name: Install iOS workload
         run: |
           $HOME/.dotnet/dotnet workload install maui-ios
