@@ -2,9 +2,6 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0-ios</TargetFramework>
 		<RunAOTCompilation>false</RunAOTCompilation>
-		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
-		<AndroidMinimumApiLevel>21</AndroidMinimumApiLevel>
-		<AndroidSupportedApiLevel>34</AndroidSupportedApiLevel>		
 		<OutputType>Exe</OutputType>
 		<RootNamespace>AviationApp</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -12,100 +9,31 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
-		<!-- Display name -->
 		<ApplicationTitle>DMMSAlerts</ApplicationTitle>
-
-		<!-- App Identifier -->
 		<ApplicationId>com.steve.DMMSAlerts</ApplicationId>
-
-		<!-- Versions -->
 		<ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
 		<ApplicationVersion>2</ApplicationVersion>
-		<AndroidVersionCode>2</AndroidVersionCode>
-
-		<!-- Android-specific settings -->
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">34.0</SupportedOSPlatformVersion>
-		<AndroidSdkVersion>34</AndroidSdkVersion>
-		<AndroidPackageFormat>apk</AndroidPackageFormat>
-
-		<!-- Release mode settings -->
-		<AndroidLinkMode Condition="'$(Configuration)'=='Release'">None</AndroidLinkMode>
-		<AndroidUseManagedCodeShrinker>false</AndroidUseManagedCodeShrinker>
-		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
-		<DefaultLanguage>English</DefaultLanguage>
-		<AndroidSigningKeyStore>DMMSAlert.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
-		<!-- Release mode settings -->
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
 		<AndroidLinkMode>None</AndroidLinkMode>
-		<AndroidKeyStore Condition="Exists('DMMSAlert.keystore')">True</AndroidKeyStore>
-		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>		
-		<AndroidSigningKeyStore Condition="Exists('DMMSAlert.keystore')">DMMSAlert.keystore</AndroidSigningKeyStore>
-		<AndroidSigningStorePass Condition="Exists('DMMSAlert.keystore')">$(ANDROID_SIGNING_STORE_PASS)</AndroidSigningStorePass>
-		<AndroidSigningKeyAlias Condition="Exists('DMMSAlert.keystore')">DMMSAlert</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass Condition="Exists('DMMSAlert.keystore')">$(ANDROID_SIGNING_KEY_PASS)</AndroidSigningKeyPass>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
-		<AndroidKeyStore Condition="Exists('DMMSAlert.keystore')">True</AndroidKeyStore>
-		<AndroidSigningKeyStore Condition="Exists('DMMSAlert.keystore')">DMMSAlert.keystore</AndroidSigningKeyStore>
-		<AndroidSigningStorePass Condition="Exists('DMMSAlert.keystore')">$(ANDROID_SIGNING_STORE_PASS)</AndroidSigningStorePass>
-		<AndroidSigningKeyAlias Condition="Exists('DMMSAlert.keystore')">DMMSAlert</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass Condition="Exists('DMMSAlert.keystore')">$(ANDROID_SIGNING_KEY_PASS)</AndroidSigningKeyPass>
-	</PropertyGroup>	
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-	  <AndroidUseAapt2>True</AndroidUseAapt2>
-	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-	  <AndroidPackageFormat>aab</AndroidPackageFormat>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<UseAot>false</UseAot>
-	</PropertyGroup>	
 	<ItemGroup>
-		<!-- App Icon -->
-		<!--<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />-->
-
-		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
-		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
-
-		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
-
-		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>	
-	<!--<ItemGroup>
-	  <None Remove="Resources\drawable\ic_notification.png" />
-	</ItemGroup>-->	
+	</ItemGroup>
 	<ItemGroup>
 	  <AndroidResource Include="Resources\drawable\ic_notification.png" />
 	</ItemGroup>
 	<ItemGroup>
-  <None Include="platforms\android\Android.csproj" />
-</ItemGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<UseAot>false</UseAot>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-	  <AndroidUseAapt2>True</AndroidUseAapt2>
-	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-	  <AndroidPackageFormat>aab</AndroidPackageFormat>
-	</PropertyGroup>	
-<ItemGroup>
-   	<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-   	<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.100" />
-	<PackageReference Update="Microsoft.Maui.Controls" Version="8.0.100" />
-	<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-</ItemGroup>
-<ItemGroup>
-  <MauiXaml Update="OptionsPage.xaml">
-    <Generator>MSBuild:Compile</Generator>
-  </MauiXaml>
-	<Reference Include="Mono.Android" />	
-</ItemGroup>
+    	<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    	<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.100" />
+		<PackageReference Update="Microsoft.Maui.Controls" Version="8.0.100" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="Mono.Android" />	
+	</ItemGroup>
 </Project>
