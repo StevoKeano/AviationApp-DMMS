@@ -16,11 +16,12 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '10.0.100-preview.0'
+
+    - name: Show .NET version
+      run: dotnet --version
 
     - name: Install MAUI
-      run: dotnet workload install maui --ignore-failed-sources
+      run: dotnet workload install maui
 
     - name: Build iOS
-      run: dotnet build -f net10.0-ios --configuration Release
+      run: dotnet build -f net9.0-ios --configuration Release -p:SuppressEolWarning=true -p:WarningLevel=0
