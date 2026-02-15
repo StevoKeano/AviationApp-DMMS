@@ -8,4 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
-      - run: dotnet build
+      - name: Clear cache
+        run: dotnet nuget locals all --clear
+      - name: Build
+        run: dotnet build
