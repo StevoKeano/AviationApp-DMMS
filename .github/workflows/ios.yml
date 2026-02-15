@@ -17,10 +17,11 @@ jobs:
       - name: Install iOS workload
         run: |
           $HOME/.dotnet/dotnet workload install maui-ios
+          $HOME/.dotnet/dotnet restore
       - name: Build
-        run: dotnet build -c Release
+        run: $HOME/.dotnet/dotnet build -c Release
       - name: Publish
-        run: dotnet publish -c Release -r iossimulator-x64 -p:CodesignKey="" -p:CodesignIdentity="" -o ./publish
+        run: $HOME/.dotnet/dotnet publish -c Release -r iossimulator-x64 -p:CodesignKey="" -p:CodesignIdentity="" -o ./publish
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
