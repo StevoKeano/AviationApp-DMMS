@@ -4,10 +4,14 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-14
+    env:
+      DOTNET_ROLL_FORWARD: Disable
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.404'
       - name: Install iOS workload
         run: dotnet workload install maui-ios
       - name: Build
