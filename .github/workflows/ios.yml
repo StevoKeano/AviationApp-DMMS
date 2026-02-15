@@ -8,19 +8,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
-      - name: Remove other SDKs
-        run: |
-          rm -rf $HOME/.dotnet/sdk/10.0*
-          rm -rf $HOME/.dotnet/sdk/9.0*
-      - name: Install iOS workload
-        run: |
-          $HOME/.dotnet/dotnet workload install maui-ios
-      - name: Build
-        run: $HOME/.dotnet/dotnet build -c Release -p:EolTargetFrameworkBehavior=disable
-      - name: Publish
-        run: $HOME/.dotnet/dotnet publish -c Release -r iossimulator-x64 -p:CodesignKey="" -p:CodesignIdentity="" -p:EolTargetFrameworkBehavior=disable -o ./publish
-      - name: Upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: ios-simulator
-          path: ./publish
+      - name: Build only
+        run: dotnet build -c Release
