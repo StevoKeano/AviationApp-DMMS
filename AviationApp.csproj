@@ -1,39 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>net8.0-ios</TargetFramework>
-		<RunAOTCompilation>false</RunAOTCompilation>
-		<OutputType>Exe</OutputType>
-		<RootNamespace>AviationApp</RootNamespace>
-		<UseMaui>true</UseMaui>
-		<SingleProject>true</SingleProject>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
-		<ApplicationTitle>DMMSAlerts</ApplicationTitle>
-		<ApplicationId>com.steve.DMMSAlerts</ApplicationId>
-		<ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
-		<ApplicationVersion>2</ApplicationVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)'=='Release'">
-		<AndroidLinkMode>None</AndroidLinkMode>
-	</PropertyGroup>
-	<ItemGroup>
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
-		<MauiFont Include="Resources\Fonts\*" />
-		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>
-	<ItemGroup>
-	  <AndroidResource Include="Resources\drawable\ic_notification.png" />
-	</ItemGroup>
-	<ItemGroup>
-    	<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    	<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.100" />
-		<PackageReference Update="Microsoft.Maui.Controls" Version="8.0.100" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="Mono.Android" />	
-	</ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0-ios</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <UseMaui>true</UseMaui>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.100" />
+  </ItemGroup>
 </Project>
