@@ -8,5 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
+      - name: Install iOS workload
+        run: dotnet workload install maui-ios
       - name: Build
         run: dotnet build -c Release
