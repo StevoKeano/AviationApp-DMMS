@@ -1,23 +1,11 @@
-name: iOS Build
+name: Build
 
-on:
-  push:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: macOS-15
-    
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Install .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
-
-    - name: Install workloads
-      run: dotnet workload install maui
-
-    - name: Build
-      run: dotnet build -c Release
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+      - run: dotnet build
