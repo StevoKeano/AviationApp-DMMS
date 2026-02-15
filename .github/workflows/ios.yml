@@ -12,7 +12,6 @@ jobs:
           dotnet-version: '8.0.404'
       - name: Remove .NET 10 to avoid conflicts
         run: rm -rf $HOME/.dotnet/sdk/10.0*
-      - name: Setup MSBuild
       - name: Install iOS workload
         run: |
           dotnet workload install maui-ios
