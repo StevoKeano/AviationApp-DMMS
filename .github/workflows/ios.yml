@@ -7,8 +7,7 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-      - name: Install iOS workload
-        run: dotnet workload install maui-ios
+      - name: Show dotnet version
+        run: dotnet --version
       - name: Build
         run: dotnet build -c Release
