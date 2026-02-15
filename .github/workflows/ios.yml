@@ -13,7 +13,6 @@ jobs:
       - name: Remove .NET 10 SDK
         run: rm -rf $HOME/.dotnet/sdk/10.0*
       - name: Install iOS workload
-      - name: Install iOS workload
         run: |
           dotnet workload install maui-ios
           dotnet workload restore
